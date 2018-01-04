@@ -9,17 +9,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
     
             <!-- Links -->
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+            <ul class="navbar-nav">
+                <li class="nav-item" [routerLinkActive] = "['active']">
                     <a [routerLink]="['/dichtsteWc']" class="nav-link" href="#">Dichtste WC<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" [routerLinkActive] = "['active']">
                     <a [routerLink]="['/straatWc']" class="nav-link" href="#">In straat zoeken</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" [routerLinkActive] = "['active']">
                     <a [routerLink]="['/buurtWc']" class="nav-link" href="#">In de buurt</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" [routerLinkActive] = "['active']">
                     <a [routerLink]="['/rolstoelWc']" class="nav-link" href="#">Voor rolstoel gebruikers</a>
                 </li>
             </ul>

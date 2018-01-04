@@ -9,17 +9,17 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
   
           <!-- Links -->
-          <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
+          <ul class="navbar-nav">
+              <li class="nav-item" [routerLinkActive] = "['active']">
                   <a [routerLink]="['/musea']" class="nav-link" href="#">Musea<span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" [routerLinkActive] = "['active']">
                   <a [routerLink]="['/concertgebouwen']" class="nav-link" href="#">Concertgebouwen</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" [routerLinkActive] = "['active']">
                   <a [routerLink]="['/velopunten']" class="nav-link" href="#">Velopunten</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" [routerLinkActive] = "['active']">
                   <a [routerLink]="['/dichtsteMuseum']" class="nav-link" href="#">Dichtste Museum</a>
               </li>
           </ul>
