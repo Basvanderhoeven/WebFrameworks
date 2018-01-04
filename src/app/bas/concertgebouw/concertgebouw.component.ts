@@ -6,32 +6,43 @@ import { ConcertgebouwenService, IConcertgebouwen } from '../../services/concert
   templateUrl: './concertgebouw.component.html'
 })
 export class ConcertgebouwComponent implements OnInit {
-    data : IConcertgebouwen;
+    data : IConcertgebouw[];
+    concertgebouwIDs : number[] = [];
+    concertgebouwLijst : IConcertgebouw[] = [];
+    concertgebouwFound : IConcertgebouw;
     
     constructor(private service : ConcertgebouwenService){}
 
     private _search : string;
     ngOnInit() {
-      this.service.getLijst().subscribe(result => this.data = result);
+      this.service.getLijst().subscribe(result => this.data = this.MapResult(result));
       //this.service.getLijst().subscribe(result => this.data = this.MapResult(result));
     }
-    get concertgebouwSearch(){
-      return this._search;
-    }
-    set concertgebouwSearch(value : string){
-      this._search = value;
-    }
-    private MapResult(result : IConcertgebouwen) : IConcertgebouw{
-      return{
-          id : result.data[0].id,
-          naam : result.data[0].naam,
-          thema : result.data[0].thema,
-          type : result.data[0].type,
-          straat : result.data[0].straat,
-          huisnr : result.data[0].huisnummer,
-          district : result.data[0].district
+
+    private MapResult(result : IConcertgebouwen) : IConcertgebouw[]{
+      for(var i=0; i < result.data.length; i++){
+        var concertgeb : IConcertgebouw = {
+          id : result.data[i].id,
+          naam : result.data[i].naam,
+          thema : result.data[i].thema,
+          type : result.data[i].type,
+          straat : result.data[i].straat,
+          huisnr : result.data[i].huisnummer,
+          district : result.data[i].district
+        }
+        this.concertgebouwIDs.push(i);
+        this.concertgebouwLijst.push(concertgeb);
       }
-          
+      return this.concertgebouwLijst;
+  }
+
+  SearchConcertgebouw = (search : string) => {
+    var temp = this.FilterName(search);
+    this.concertgebouwFound = temp;
+  }
+
+  private FilterName(search : string) : IConcertgebouw{
+    return this.concertgebouwLijst.find(x => x.naam == search);
   }
 }
 interface IConcertgebouw{

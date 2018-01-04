@@ -1,4 +1,50 @@
-<input type="text" class = "form-control" [(ngModel)]="concertgebouwSearch">
+<div class="col-md-12">
+    <form class="form-inline">
+        <div class="md-form form-group">
+            <i class="fa fa-search prefix"></i>
+            <input #searchValue type="text">
+        </div>
+        <div class="md-form form-group">
+            <a class="btn btn-primary btn-lg" (click)="SearchConcertgebouw(searchValue.value)" >
+                Zoek
+            </a>
+        </div>
+    </form>
+</div>
+
+<div class="card" *ngIf="concertgebouwFound">
+    <div class="card-header">
+        Gevonden Concertgebouw
+    </div>
+    
+    <div class="card-block">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><strong>ID</strong></th>
+                    <th><strong>Naam</strong></th>
+                    <th><strong>Thema</strong></th>
+                    <th><strong>Type</strong></th>
+                    <th><strong>Straat</strong></th>
+                    <th><strong>Huisnr</strong></th>
+                    <th><strong>Omgeving</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>{{concertgebouwFound.id}}</td>
+                        <td>{{concertgebouwFound.naam}}</td>
+                        <td>{{concertgebouwFound.thema}}</td>
+                        <td>{{concertgebouwFound.type}}</td>
+                        <td>{{concertgebouwFound.straat}}</td>
+                        <td>{{concertgebouwFound.huisnr}}</td>
+                        <td>{{concertgebouwFound.district}}</td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+  </div>
+
 <!--Card-->
 <div class="card">
     <div class="card-header">
@@ -19,15 +65,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let concertgebouw of data.data">
-                    <td>{{concertgebouw.id}}</td>
-                    <td>{{concertgebouw.naam}}</td>
-                    <td>{{concertgebouw.thema}}</td>
-                    <td>{{concertgebouw.type}}</td>
-                    <td>{{concertgebouw.straat}}</td>
-                    <td>{{concertgebouw.huisnummer}}</td>
-                    <td>{{concertgebouw.district}}</td>
-                </tr>>
+                <tr *ngFor="let i of concertgebouwIDs">
+                    <td>{{data[i].id}}</td>
+                    <td>{{data[i].naam}}</td>
+                    <td>{{data[i].thema}}</td>
+                    <td>{{data[i].type}}</td>
+                    <td>{{data[i].straat}}</td>
+                    <td>{{data[i].huisnr}}</td>
+                    <td>{{data[i].district}}</td>
+                </tr>
             </tbody>
         </table>
     </div>
