@@ -17,11 +17,9 @@ export class DichtsteMuseumComponent implements OnInit {
     lng : number;
 
         constructor(private service : MuseaService){
-
         }
     
         ngOnInit(){
-          
             this.service.getLijst().subscribe(result => this.data = this.MapResult(result));
             console.log(this.dichtsteMuseum);
             this.GetMyPosition();
@@ -85,6 +83,7 @@ export class DichtsteMuseumComponent implements OnInit {
             var min = arrayMin(distances);
             var museum = this.museumLijst.find(x => x.distance == min);
             this.dichtsteMuseum = museum;
+            console.log(museum);
             return this.dichtsteMuseum;
         }
     }
