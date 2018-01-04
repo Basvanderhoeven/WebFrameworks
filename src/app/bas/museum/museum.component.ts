@@ -8,43 +8,43 @@ import 'rxjs/add/operator/map';
   templateUrl: './museum.component.html'
 })
 export class MuseumComponent implements OnInit {
-    data : IMusea;
-    
+    data : IMuseum[];
+    museumLijst : IMuseum[] = [];
+    museumIDs : number[] = [];
+    museumFound : IMuseum;
     constructor(private service : MuseaService){}
 
     private _search : string;
 
     ngOnInit() {
-        this.service.getLijst().subscribe(result => this.data = result);
+      this.service.getLijst().subscribe(result => this.data = this.MapResult(result));
         //setInterval(this.SearchMuseum, 2000);
+
     }
-    get search(){
-      return this._search;
+    SearchMuseum = (search : string) => {
+      var temp = this.FilterName(search);
+      this.museumFound = temp;
     }
-    set search(value){
-      this._search = value;
-    }
-    searchMuseum = () => {
-      console.log(this.search);
-      this.service.getLijst().
-        map(musea => {
-          let fl = musea.data.filter(museum => museum.naam === this.search);
-          return (fl.length > 0) ? fl[0] : null;
-        }).subscribe(result => this.data = result[0]);
-    }
-    private MapResult(result : IMusea) : IMuseum{
-      return{
-          id : result.data[0].id,
-          naam : result.data[0].naam,
-          thema : result.data[0].thema,
-          type : result.data[0].type,
-          straat : result.data[0].straat,
-          huisnr : result.data[0].huisnummer,
-          district : result.data[0].district
+    private MapResult(result : IMusea) : IMuseum[]{
+      for(var i=0; i < result.data.length; i++){
+        var museum : IMuseum = 
+        {
+            id : result.data[i].id,
+            naam : result.data[i].naam,
+            thema : result.data[i].thema,
+            type : result.data[i].type,
+            straat : result.data[i].straat,
+            huisnr : result.data[i].huisnummer,
+            district : result.data[i].district
+        }
+        this.museumIDs.push(i);
+        this.museumLijst.push(museum);
       }
-          
-  }
-  
+      return this.museumLijst;
+    }
+    private FilterName(search : string) : IMuseum{
+      return this.museumLijst.find(x => x.naam == search);
+    }
 }
 interface IMuseum{
     id : string,

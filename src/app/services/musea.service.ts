@@ -47,16 +47,16 @@ export interface IData{
     shape: string;
     objectid: number;
 }
-//export interface IPaging {
-//   records: number;
-//    pages: number;
-//    pageCurrent: number;
-//    pageNext?: any;
-//    pagePrev?: any;
-//    pageSize: number;
-//}
+export interface IPaging {
+   records: number;
+    pages: number;
+    pageCurrent: number;
+    pageNext?: any;
+    pagePrev?: any;
+    pageSize: number;
+}
 
 export interface IMusea {
-    //paging: IPaging;
+    paging: IPaging;
     data: IData[];
 }

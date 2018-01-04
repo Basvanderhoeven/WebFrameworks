@@ -1,4 +1,46 @@
-<input type="text" [value]="search" (input)="searchMuseum()" class = "form-control" [(ngModel)]="search">
+<div class="col-md-12">
+        <form class="form-inline">
+            <div class="md-form form-group">
+                <i class="fa fa-search prefix"></i>
+                <input #searchValue type="text">
+            </div>
+            <div class="md-form form-group">
+                <a class="btn btn-primary btn-lg" (click)="SearchVeloPunt(searchValue.value)" >
+                    Zoek
+                </a>
+            </div>
+        </form>
+</div>
+<div class="card" *ngIf="velopuntFound">
+        <div class="card-header">
+            Gevonden Velo punt bij de straat {{ velopuntFound.straatnaam }}
+        </div>
+        
+        <div class="card-block">
+            <table class="table table-striped">
+                <thead>
+                        <tr>
+                            <th><strong>ID</strong></th>
+                            <th><strong>Straatnaam</strong></th>
+                            <th><strong>Huisnr</strong></th>
+                            <th><strong>Postcode</strong></th>
+                            <th><strong>Omgeving</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{velopuntFound.id}}</td>
+                                <td>{{velopuntFound.straatnaam}}</td>
+                                <td>{{velopuntFound.huisnummer}}</td>
+                                <td>{{velopuntFound.postcode}}</td>
+                                <td>{{velopuntFound.district}}</td>
+                            </tr>
+                    </tbody>
+            </table>
+        </div>
+      </div>
+<!--Card-->
+<br>
 <!--Card-->
 <div class="card">
     <div class="card-header">
@@ -17,14 +59,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let velopunt of data.data">
-                    <td>{{velopunt.id}}</td>
-                    <td>{{velopunt.straatnaam}}</td>
-                    <td>{{velopunt.huisnummer}}</td>
-                    <td>{{velopunt.postcode}}</td>
-                    <td>{{velopunt.district}}</td>
-                </tr>>
+                    <tr *ngFor="let i of velopuntenIDs">
+                            <td>{{data[i].id}}</td>
+                            <td>{{data[i].straatnaam}}</td>
+                            <td>{{data[i].huisnummer}}</td>
+                            <td>{{data[i].postcode}}</td>
+                            <td>{{data[i].district}}</td>
+                        </tr>
             </tbody>
         </table>
     </div>
   </div>
+
+  

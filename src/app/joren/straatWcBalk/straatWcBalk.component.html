@@ -1,24 +1,47 @@
-<input type="text" class = "form-control" [(ngModel)]="Search">
+<div class="col-md-12">
+        <form class="form-inline">
+            <div class="md-form form-group">
+                <i class="fa fa-search prefix"></i>
+                <input #searchValue type="text">
+            </div>
+            <div class="md-form form-group">
+                <a class="btn btn-primary btn-lg" (click)="SearchWc(searchValue.value)" >
+                    Zoek
+                </a>
+            </div>
+        </form>
+</div>
 <!--Card-->
 <div class="card">
-    <div class="card-header">Openbare Toiletten in {{data.straat}}
+    <div class="card-header">Openbare Toiletten in {{searchValue.value}}
     </div>
     
-    <div class="card-block">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>adres</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">{{data.id}}</th>
-                    <td>{{data.straat}} {{data.huisnr}} {{data.postcode}} {{data.district}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-  </div>
+    <div class="card" *ngIf="velopuntFound">
+            <div class="card-header">
+                Gevonden Velo punt bij de straat {{ wc.straat }}
+            </div>
+            
+            <div class="card-block">
+                <table class="table table-striped">
+                    <thead>
+                            <tr>
+                                <th><strong>ID</strong></th>
+                                <th><strong>Straatnaam</strong></th>
+                                <th><strong>Huisnr</strong></th>
+                                <th><strong>Postcode</strong></th>
+                                <th><strong>Omgeving</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of wcIDs">
+                                    <td>{{data[i].id}}</td>
+                                    <td>{{data[i].straat}}</td>
+                                    <td>{{data[i].huisnr}}</td>
+                                    <td>{{data[i].postcode}}</td>
+                                    <td>{{data[i].district}}</td>
+                                </tr>
+                        </tbody>
+                </table>
+            </div>
+          </div>
   <!--/.Card-->

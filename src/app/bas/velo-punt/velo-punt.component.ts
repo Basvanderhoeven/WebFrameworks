@@ -6,26 +6,39 @@ import { VeloPuntenService, IVeloPunten } from '../../services/velopunten.servic
   templateUrl: './velo-punt.component.html'
 })
 export class VeloPuntComponent implements OnInit {
-    data : IVeloPunten;
+    data : IVeloPunt[];
+    velopuntFound : IVeloPunt;
+    velopuntenLijst : IVeloPunt[] = [];
+    velopuntenIDs : number[] = [];
     
     constructor(private service : VeloPuntenService){}
-
-    private _search : string;
     ngOnInit() {
-      this.service.getLijst().subscribe(result => this.data = result);
-      //this.service.getLijst().subscribe(result => this.data = this.MapResult(result));
+      this.service.getLijst().subscribe(result => this.data = this.MapResult(result));
+      console.log(this.velopuntenLijst);
+        //setInterval(this.SearchMuseum, 2000);
     }
-    searchMuseum = () =>{
-      console.log(this._search);
+    SearchVeloPunt = (search : string) => {
+      var temp = this.FilterName(search);
+      this.velopuntFound = temp;
+      
     }
-    @Output() searchChange = new EventEmitter();
-    @Input()
-    get search(){
-      return this._search;
+    private MapResult(result : IVeloPunten) : IVeloPunt[]{
+      for(var i=0; i < result.data.length; i++){
+        var velopunt : IVeloPunt = 
+        {
+            id : result.data[i].id,
+            straatnaam : result.data[i].straatnaam,
+            huisnummer : result.data[i].huisnummer,
+            postcode : result.data[i].postcode,
+            district : result.data[i].district
+        }
+        this.velopuntenIDs.push(i);
+        this.velopuntenLijst.push(velopunt);
+      }
+      return this.velopuntenLijst;
     }
-    set search(value : string){
-      this._search = value;
-      this.searchChange.emit(this.search);
+    private FilterName(search : string) : IVeloPunt{
+      return this.velopuntenLijst.find(x => x.straatnaam == search);
     }
     
 }
