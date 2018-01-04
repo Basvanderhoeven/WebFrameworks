@@ -16,10 +16,7 @@
     <div class="card-header">Openbare Toiletten in {{searchValue.value}}
     </div>
     
-    <div class="card" *ngIf="velopuntFound">
-            <div class="card-header">
-                Gevonden Velo punt bij de straat {{ wc.straat }}
-            </div>
+    <div class="card" *ngIf="wcFound">
             
             <div class="card-block">
                 <table class="table table-striped">
@@ -30,15 +27,15 @@
                                 <th><strong>Huisnr</strong></th>
                                 <th><strong>Postcode</strong></th>
                                 <th><strong>Omgeving</strong></th>
-                                </tr>
-                            </thead>
+                            </tr>
+                    </thead>
                             <tbody>
                                 <tr *ngFor="let i of wcIDs">
-                                    <td>{{data[i].id}}</td>
-                                    <td>{{data[i].straat}}</td>
-                                    <td>{{data[i].huisnr}}</td>
-                                    <td>{{data[i].postcode}}</td>
-                                    <td>{{data[i].district}}</td>
+                                    <td>{{wcLijst[i].id}}</td>
+                                    <td>{{wcLijst[i].straat}}</td>
+                                    <td>{{wcLijst[i].huisnr}}</td>
+                                    <td>{{wcLijst[i].postcode}}</td>
+                                    <td>{{wcLijst[i].district}}</td>
                                 </tr>
                         </tbody>
                 </table>

@@ -17,7 +17,7 @@ export class StraatWcBalkComponent implements OnInit{
     
     ngOnInit(){
         this.service.getLijst().subscribe(result => this.data = this.MapResult(result));
-        console.log(this.wcLijst);
+        
     }
     
     private MapResult(result : IWc) : IStraat[]{
@@ -36,10 +36,23 @@ export class StraatWcBalkComponent implements OnInit{
         return this.wcLijst;   
     }
     SearchWc = (search : string) => {
-        var temp = this.FilterStraat(search);
-        this.wcFound.push(temp);
+        this.wcIDs.length = 0;
+        this.wcFound.length = 0;
+        for(var i=0; i < this.data.length; i++){
+            if(this.data[i].straat == search){
+                this.wcIDs.push(i);
+            }
+        }
+        for(var j=0; j < this.wcIDs.length; j++){
+            this.wcFound.push(this.data[this.wcIDs[j]]);
+        }
+        console.log(this.wcLijst);
+        console.log(this.wcIDs);
+        return this.wcFound;
+        
     }
-    private FilterStraat(search : string) : IStraat{
+    private FilterStraat(search : string) : IStraat {
+
         return this.wcLijst.find(x => x.straat == search);
     }
 }
