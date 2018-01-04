@@ -1,0 +1,43 @@
+<input type="text" class = "form-control" [(ngModel)]="concertgebouwSearch">
+<!--Card-->
+<div class="card">
+    <div class="card-header">
+            Concertgebouwen in Antwerpen
+    </div>
+    
+    <div class="card-block">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><strong>ID</strong></th>
+                    <th><strong>Naam</strong></th>
+                    <th><strong>Thema</strong></th>
+                    <th><strong>Type</strong></th>
+                    <th><strong>Straat</strong></th>
+                    <th><strong>Huisnr</strong></th>
+                    <th><strong>Omgeving</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let concertgebouw of data.data">
+                    <td>{{concertgebouw.id}}</td>
+                    <td>{{concertgebouw.naam}}</td>
+                    <td>{{concertgebouw.thema}}</td>
+                    <td>{{concertgebouw.type}}</td>
+                    <td>{{concertgebouw.straat}}</td>
+                    <td>{{concertgebouw.huisnummer}}</td>
+                    <td>{{concertgebouw.district}}</td>
+                </tr>>
+            </tbody>
+        </table>
+    </div>
+  </div>
+  <!--
+    id : string,
+    naam : string,
+    thema : string,
+    type : string,
+    straat: string,
+    huisnr: string,
+    district: string
+  -->

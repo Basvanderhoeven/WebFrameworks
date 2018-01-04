@@ -1,0 +1,30 @@
+<input type="text" [value]="search" (input)="searchMuseum()" class = "form-control" [(ngModel)]="search">
+<!--Card-->
+<div class="card">
+    <div class="card-header">
+        Velo punten in Antwerpen
+    </div>
+    
+    <div class="card-block">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><strong>ID</strong></th>
+                    <th><strong>Straatnaam</strong></th>
+                    <th><strong>Huisnr</strong></th>
+                    <th><strong>Postcode</strong></th>
+                    <th><strong>Omgeving</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let velopunt of data.data">
+                    <td>{{velopunt.id}}</td>
+                    <td>{{velopunt.straatnaam}}</td>
+                    <td>{{velopunt.huisnummer}}</td>
+                    <td>{{velopunt.postcode}}</td>
+                    <td>{{velopunt.district}}</td>
+                </tr>>
+            </tbody>
+        </table>
+    </div>
+  </div>

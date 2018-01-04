@@ -1,0 +1,24 @@
+<input type="text" class = "form-control" [(ngModel)]="Search">
+<!--Card-->
+<div class="card">
+    <div class="card-header">Openbare Toiletten in {{data.straat}}
+    </div>
+    
+    <div class="card-block">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>adres</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">{{data.id}}</th>
+                    <td>{{data.straat}} {{data.huisnr}} {{data.postcode}} {{data.district}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>
+  <!--/.Card-->

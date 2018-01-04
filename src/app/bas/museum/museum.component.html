@@ -1,0 +1,61 @@
+<input type="text" [value]="search" (input)="searchMuseum($event)" class = "form-control" [(ngModel)]="search">
+<p>{{search}}!</p>
+
+<div class="col-md-12">
+            <form class="form-inline">
+                <div class="md-form form-group">
+                    <i class="fa fa-search prefix"></i>
+                    
+                </div>
+                <div class="md-form form-group">
+                    <a class="btn btn-primary btn-lg">
+                        
+                    </a>
+                </div>
+            </form>
+</div>
+
+
+
+<!--Card-->
+<div class="card">
+    <div class="card-header">
+        Musea in Antwerpen
+    </div>
+    
+    <div class="card-block">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><strong>ID</strong></th>
+                    <th><strong>Naam</strong></th>
+                    <th><strong>Thema</strong></th>
+                    <th><strong>Type</strong></th>
+                    <th><strong>Straat</strong></th>
+                    <th><strong>Huisnr</strong></th>
+                    <th><strong>Omgeving</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let museum of data.data">
+                    <td>{{museum.id}}</td>
+                    <td>{{museum.naam}}</td>
+                    <td>{{museum.thema}}</td>
+                    <td>{{museum.type}}</td>
+                    <td>{{museum.straat}}</td>
+                    <td>{{museum.huisnummer}}</td>
+                    <td>{{museum.district}}</td>
+                </tr>>
+            </tbody>
+        </table>
+    </div>
+  </div>
+  <!--
+    id : string,
+    naam : string,
+    thema : string,
+    type : string,
+    straat: string,
+    huisnr: string,
+    district: string
+  -->

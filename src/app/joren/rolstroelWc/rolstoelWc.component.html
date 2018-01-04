@@ -1,0 +1,20 @@
+<app-navSecond></app-navSecond>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>afstand</th>
+        <th>adres</th>
+        <th>betalend</th>
+        <th>doelgroep</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let wc of data.data">
+            <th scope="row">{{wc.objectid}}</th>
+            <td>{{wc.straat}} {{wc.huisnummer}} {{wc.postcode}} {{wc.district}}</td>
+            <td>{{wc.betalend}}</td>
+            <td>{{wc.doelgroep}}</td>
+        </tr>
+
+    </tbody>
+  </table>
