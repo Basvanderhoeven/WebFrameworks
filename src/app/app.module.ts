@@ -31,6 +31,7 @@ import { VeloPuntenService } from './services/velopunten.service';
 import { VeloPuntComponent } from  './bas/velo-punt/velo-punt.component';
 import { RandomMuseumComponent } from './bas/randomMuseum/randomMuseum.component';
 import { RandomMuseumBalkComponent } from './bas/randomMuseumBalk/randomMuseumBalk.component';
+import { PageNotFoundComponent } from './pageNotFound/pageNotFound.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { RandomMuseumBalkComponent } from './bas/randomMuseumBalk/randomMuseumBa
     MuseaComponent,
     MuseumComponent,
     RandomMuseumComponent,
-    RandomMuseumBalkComponent
+    RandomMuseumBalkComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +77,7 @@ import { RandomMuseumBalkComponent } from './bas/randomMuseumBalk/randomMuseumBa
       {path: "dichtsteMuseum", component : DichtsteMuseumComponent},
       {path: "randomMuseum", component : RandomMuseumComponent},
       {path: "", redirectTo: "home", pathMatch: "full"},
+      {path: "**", component : PageNotFoundComponent}
     ], {useHash: true}),
     MDBBootstrapModule.forRoot()
   ],
