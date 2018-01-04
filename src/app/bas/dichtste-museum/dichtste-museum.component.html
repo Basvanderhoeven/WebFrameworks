@@ -1,4 +1,45 @@
 <app-second-nav-bas></app-second-nav-bas>
-<p>
-  dichtste-museum works!
-</p>
+<div class="card">
+    <div class="card-header">
+        GEVONDEN MUSEUM
+    </div>
+    
+    <div class="card-block" *ngIf="dichtsteMuseum">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><strong>Afstand</strong></th>
+                    <th><strong>Naam</strong></th>
+                    <th><strong>Straat</strong></th>
+                    <th><strong>Huisnummer</strong></th>
+                    <th><strong>Postcode</strong></th>
+                    <th><strong>Omgeving</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                            <td>{{dichtsteMuseum.distance}}</td>
+                            <td>{{dichtsteMuseum.naam}}</td>
+                            <td>{{dichtsteMuseum.straat}}</td>
+                            <td>{{dichtsteMuseum.huisnr}}</td>
+                            <td>{{dichtsteMuseum.postcode}}</td>
+                            <td>{{dichtsteMuseum.district}}</td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+  </div>
+<!--Card-->
+
+<!--
+id : string,
+naam : string,
+thema : string,
+type : string,
+straat: string,
+huisnr: string,
+district: string
+
+
+-->
+

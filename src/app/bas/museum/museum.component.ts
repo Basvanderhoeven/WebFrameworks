@@ -19,7 +19,7 @@ export class MuseumComponent implements OnInit {
     ngOnInit() {
       this.service.getLijst().subscribe(result => this.data = this.MapResult(result));
         //setInterval(this.SearchMuseum, 2000);
-
+      console.log(this.data);
     }
     SearchMuseum = (search : string) => {
       var temp = this.FilterName(search);
@@ -35,7 +35,9 @@ export class MuseumComponent implements OnInit {
             type : result.data[i].type,
             straat : result.data[i].straat,
             huisnr : result.data[i].huisnummer,
-            district : result.data[i].district
+            district : result.data[i].district,
+            lat : +result.data[i].point_lat,
+            lng : +result.data[i].point_lng
         }
         this.museumIDs.push(i);
         this.museumLijst.push(museum);
@@ -53,5 +55,7 @@ interface IMuseum{
     type : string,
     straat: string,
     huisnr: string,
-    district: string
+    district: string,
+    lat: number,
+    lng: number
 }

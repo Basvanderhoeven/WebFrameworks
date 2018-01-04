@@ -14,14 +14,6 @@ export class MuseaService{
     getLijst() : Observable<IMusea>{
         return this._http.get<IMusea>("http://datasets.antwerpen.be/v4/gis/museumoverzicht.json" );
     }
-    getMuseum(museum : string) : Observable<IMusea>{
-        return this._http.get<IMusea>("http://datasets.antwerpen.be/v4/gis/museumoverzicht.json");
-    }
-    getDichtste() : Observable<IMusea>{
-        
-        var json = this._http.get<IMusea>("http://datasets.antwerpen.be/v4/gis/museumoverzicht.json" );
-        return;
-    }
 }
 export interface IData{
     id: string;
