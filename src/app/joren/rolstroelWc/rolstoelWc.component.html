@@ -2,7 +2,7 @@
 <table class="table table-striped">
     <thead>
       <tr>
-        <th>afstand</th>
+        <th>rolstoel</th>
         <th>adres</th>
         <th>betalend</th>
         <th>doelgroep</th>
@@ -10,7 +10,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let i of wcIDs">
-            <th scope="row" *ngIf="data[i]">{{i}}</th>
+            <th scope="row" *ngIf="data[i]">{{data[i].rolstoel}}</th>
             <td *ngIf="data[i]">{{data[i].straat}} {{data[i].huisnummer}} {{data[i].postcode}} {{data[i].district}}</td>
             <td *ngIf="data[i]">{{data[i].betalend}}</td>
             <td *ngIf="data[i]">{{data[i].doelgroep}}</td>

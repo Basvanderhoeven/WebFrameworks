@@ -24,13 +24,13 @@ export class RolstoelWcComponent implements OnInit{
             if(result.data[i].integraal_toegankelijk == "ja"){
                 var wc : IWcRolstoel = 
                 {
-                    objectid : result.data[i].id,
                     straat : result.data[i].straat,
                     huisnummer : result.data[i].huisnummer,
                     postcode : result.data[i].postcode,
                     district : result.data[i].district,
                     betalend : result.data[i].betalend,
-                    doelgroep : result.data[i].doelgroep
+                    doelgroep : result.data[i].doelgroep,
+                    rolstoel : result.data[i].integraal_toegankelijk
                 }
                 this.wcIDs.push(i);
                 this.wcLijst.push(wc);
@@ -43,11 +43,11 @@ export class RolstoelWcComponent implements OnInit{
 }
 
 interface IWcRolstoel{
-    objectid : string,
     straat : string,
     huisnummer : string,
     postcode: string,
     district: string,
     betalend: string,
-    doelgroep: string
+    doelgroep: string,
+    rolstoel: string
 }
