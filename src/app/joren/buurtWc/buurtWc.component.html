@@ -1,19 +1,21 @@
 <app-navSecond></app-navSecond>
-<table class="table table-striped">
+<table class="table table-striped" *ngIf="data">
     <thead>
       <tr>
         <th>afstand</th>
-        <th>adres</th>
-        <th>betalend</th>
-        <th>doelgroep</th>
+        <th>straat</th>
+        <th>huisnummer</th>
+        <th>postcode</th>
+        <th>omgeving</th>
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let wc of data.data">
-            <th scope="row">{{wc.objectid}}</th>
-            <td>{{wc.straat}} {{wc.huisnummer}} {{wc.postcode}} {{wc.district}}</td>
-            <td>{{wc.betalend}}</td>
-            <td>{{wc.doelgroep}}</td>
+        <tr *ngFor="let wc of wcLijst">
+            <th scope="row">{{wc.distance}}</th>
+            <td>{{wc.straat}}</td>
+            <td>{{wc.huisnr}}</td>
+            <td>{{wc.postcode}}</td>
+            <td>{{wc.district}}</td>
         </tr>
 
     </tbody>

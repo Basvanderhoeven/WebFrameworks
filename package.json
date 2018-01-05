@@ -23,12 +23,15 @@
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "angular-bootstrap-md": "4.3.7",
+    "array-sort": "^1.0.0",
     "chart.js": "2.7.1",
     "core-js": "^2.4.1",
     "font-awesome": "4.7.0",
     "geolib": "^2.0.24",
     "hammerjs": "2.0.8",
     "rxjs": "^5.4.2",
+    "sort-deep-object-arrays": "^1.1.0",
+    "sort-object-array": "^1.0.1",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

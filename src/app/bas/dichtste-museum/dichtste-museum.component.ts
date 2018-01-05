@@ -20,9 +20,9 @@ export class DichtsteMuseumComponent implements OnInit {
         }
     
         ngOnInit(){
+            setInterval(this.GetMyPosition(), 1000);
             this.service.getLijst().subscribe(result => this.data = this.MapResult(result));
-            console.log(this.dichtsteMuseum);
-            this.GetMyPosition();
+            
             //this.GetDistance();
             
         }
@@ -72,7 +72,6 @@ export class DichtsteMuseumComponent implements OnInit {
                     }
                 }
                 var locatie : ILocatie = {
-                    naam: result.data[i].naam,
                     coordinates: museum.coordinates
                 }
                 this.museumLocaties.push(locatie);
@@ -88,7 +87,6 @@ export class DichtsteMuseumComponent implements OnInit {
         }
     }
     interface ILocatie{
-        naam : string,
         coordinates : IPosition
     }
     interface IPosition{
