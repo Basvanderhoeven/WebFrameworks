@@ -31,29 +31,17 @@ export class buurtWcComponent implements OnInit{
         //this.GetMyPosition();
         setInterval(this.GetMyPosition(), 1000);
         this.service.getLijst().subscribe(result => this.data = this.MapResult(result));
-        this.wcLijstSorted = this.wcLijst.sort(sortBy('wcLijst.distance'));
-        //this.wcLijstDistancesSorted = this.wcLijstDistances.sort((n1.distance, n1.distance): number =>{});
-        console.log("wclijst",this.wcLijst);
-        console.log("wclijstsorted", this.wcLijstSorted);
-        console.log("numeric array", this.numericArray);
-        console.log("wclijstdistancessorted", this.wcLijstDistancesSorted);
     }
     GetMyPosition = () => {
-        //this.myLocation.latitude = position.coords.latitude;
-        //this.myLocation.longitude = position.coords.longitude;
-        //console.log(this.myLocation);
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(
                 position => {
                     this.lat = position.coords.latitude;
                     this.lng = position.coords.longitude;
-                    //this.myPosition.latitude = position.coords.latitude;
-                    //this.myPosition.longitude = position.coords.longitude;
                 });
             }
     }
     GetDistance = (_lat, _lng) => {
-        //console.log(this.lat, this.lng);
         var distance = geolib.getDistance(
             { 
                 latitude : this.lat, 
@@ -88,6 +76,15 @@ export class buurtWcComponent implements OnInit{
             this.wcLocaties.push(locatie);
             this.wcLijst.push(wc);
         }
+        for(let i = 0; i < this.wcLijst.length; i++) { 
+            for(let j =i; j < this.wcLijst.length; j++){
+                if(this.wcLijst[i].distance > this.wcLijst[j].distance) {
+                    let tmp = this.wcLijst[j]; 
+                    this.wcLijst[j] = this.wcLijst[i]; 
+                    this.wcLijst[i] = tmp;
+                }
+            }
+         }
         //console.log(wc);
         
         return wc;
